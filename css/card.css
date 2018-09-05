@@ -1,0 +1,68 @@
+.card-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 99.5%;
+    border: 2px solid #696969;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.detail-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.image-container {
+    width: 12%;
+    height: 10%;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 2px solid #696969   ;
+}
+
+.text-wrapper {
+    margin-bottom: 5px;
+}
+
+.card-button-wrapper {
+    width: 10%;
+    height: 100%;
+    float: right;
+    margin-right: 5px;
+}
+
+.view-button {
+    width: 100%;
+    height: 28px;
+    font-size: 16px;
+    margin-top: 4px;
+    background: #6666ff;
+    border: 2px solid #1919ff;
+    border-radius: 5px;
+}
+
+.edit-button {
+    width: 100%;
+    height: 28px;
+    font-size: 16px;
+    margin-top: 2px;
+    background: #ffff7f;
+    border: 2px solid #e5e500;
+    border-radius: 5px;
+}
+
+.delete-button {
+    width: 100%;
+    height: 28px;
+    font-size: 16px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    background: #ff4c4c;
+    border: 2px solid #cc0000;
+    border-radius: 5px;
+}
