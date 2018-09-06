@@ -1,0 +1,30 @@
+.view-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.image-wrapper {
+    width: 35%;
+}
+
+.detail-wrapper {
+    width: 65%;
+}
+
+.detail-text-wrapper {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    width: 15%;
+    height: 37px;
+    border: 2px solid #00004c;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background: #00007f;
+    margin-right: 15px;
+    float: right;
+}

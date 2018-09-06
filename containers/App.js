@@ -3,7 +3,6 @@ import Banner from '../components/banner';
 import NavBar from '../components/navbar';
 import Card from '../components/card';
 import {connect} from 'react-redux';
-import {setMessage} from '../actions/message';
 import {Link} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -56,13 +55,13 @@ class App extends Component {
 export default App;
 
 const container = {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
     width: '100%'
 }
 
 const wrapper = {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
     width: '100%'
 }
 
