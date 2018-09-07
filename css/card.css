@@ -41,8 +41,9 @@
     height: 28px;
     font-size: 16px;
     margin-top: 5px;
-    background: #6666ff;
-    border: 2px solid #1919ff;
+    background: #00007f;
+    border: 2px solid #00004c;
+    color: white;
     border-radius: 5px;
 }
 
@@ -51,8 +52,9 @@
     height: 28px;
     font-size: 16px;
     margin-top: 2px;
-    background: #ffff7f;
-    border: 2px solid #e5e500;
+    background: #00007f;
+    border: 2px solid #00004c;
+    color: white;
     border-radius: 5px;
 }
 
@@ -62,7 +64,8 @@
     font-size: 16px;
     margin-top: 2px;
     margin-bottom: 2px;
-    background: #ff4c4c;
-    border: 2px solid #cc0000;
+    background: #00007f;
+    border: 2px solid #00004c;
+    color: white;
     border-radius: 5px;
 }

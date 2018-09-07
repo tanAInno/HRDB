@@ -4,6 +4,7 @@ import NavBar from '../components/navbar';
 import Card from '../components/card';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdBadge, faFileSignature, faBriefcase, faBuilding, faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -12,10 +13,23 @@ library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,faSearch)
 
 class App extends Component {
     state = {
-        cardList : [{id:"111111",name:"John",position:"Engineer",department:"IT"},
-                    {id:"112211",name:"Mark",position:"Manager",department:"IT"},
-                    {id:"222222",name:"Jack",position:"Engineer",department:"Site"},
-                    {id:"323221",name:"Nate",position:"HR",department:"HR"}]
+        cardList : []
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:8000/api/contacts/")
+        .then(response => {
+            console.log(response.data.data)
+            const card_list = response.data.data.map(c => {
+                return({
+                    id : c.employee_id,
+                    name : c.name,
+                    position : c.position,
+                    department : c.department     
+                })
+            })
+            this.setState({cardList : card_list})
+        }).catch(error => console.log(error))
     }
 
     render () {
@@ -109,10 +123,11 @@ const searchResultText = {
 const addButton = {
     width: '100%',
     height: '37px',
-    border: '2px solid #32CD32',
+    backgroundColor: '#00007f',
+    border: '2px solid #00004c',
+    color: 'white',
     borderRadius: '5px',
-    fontSize: '16px',
-    backgroundColor: '#00FF00'
+    fontSize: '16px'
 }
 
 const addButtonWrapper = {

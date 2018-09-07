@@ -23,7 +23,7 @@ class Card extends Component {
                 </div>
                 <div className="card-button-wrapper">
                     <Link to="/view"><button className="view-button" onClick={this.onView}>View</button></Link>
-                    <button className="edit-button">Edit</button>
+                    <Link to="/edit"><button className="edit-button" onClick={this.onView}>Edit</button></Link>
                     <button className="delete-button">Delete</button>
                 </div>
             </div>

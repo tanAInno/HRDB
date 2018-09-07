@@ -1,0 +1,9 @@
+.edit-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.image-wrapper {
+    width: 35%;
+}

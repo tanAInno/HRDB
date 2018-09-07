@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import App from './containers/App';
 import AddPerson from './containers/AddPerson';
 import ViewPerson from './containers/ViewPerson';
+import EditPerson from './containers/EditPerson';
 export default () => {
  return (
    <BrowserRouter>
@@ -10,6 +11,7 @@ export default () => {
    <Route exact path='/' component={App}/>
    <Route path='/add' component={AddPerson}/>
    <Route path='/view' component={ViewPerson}/>
+   <Route path='/edit' component={EditPerson}/>
    </Switch>
    </BrowserRouter>
  )
