@@ -22,7 +22,8 @@ class App extends Component {
             console.log(response.data.data)
             const card_list = response.data.data.map(c => {
                 return({
-                    id : c.employee_id,
+                    id : c._id,
+                    employee_id : c.employee_id,
                     name : c.name,
                     position : c.position,
                     department : c.department     
@@ -50,7 +51,8 @@ class App extends Component {
                                 {this.state.cardList.map((data, index) => {
                                     return(
                                         <Card 
-                                            id={ data.id }
+                                            id = { data.id }
+                                            employee_id={ data.employee_id }
                                             name={ data.name }
                                             position={ data.position }
                                             department={ data.department }
