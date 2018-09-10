@@ -69,3 +69,35 @@
     color: white;
     border-radius: 5px;
 }
+
+.modal-sub-title {
+    margin-top: -8px;
+}
+
+.modal-detail {
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+.modal-button-wrapper {
+    float: right;
+    width: 40%;
+}
+
+.modal-confirm-button {
+    width: 50%;
+    height: 25px;
+    background: #00007f;
+    border: 2px solid #00004c;
+    color: white;
+    border-radius: 5px;
+}
+
+.modal-cancel-button {
+    width: 50%;
+    height: 25px;
+    background: #660000;
+    border: 2px solid #330000;
+    color: white;
+    border-radius: 5px;
+}

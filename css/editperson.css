@@ -4,6 +4,8 @@
     margin-top: 10px;
 }
 
-.image-wrapper {
+.edit-image-wrapper {
+    margin-top: 35px;
     width: 35%;
+    height: 270px;
 }

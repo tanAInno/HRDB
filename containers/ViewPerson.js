@@ -18,7 +18,7 @@ class ViewPerson extends Component {
                         </div>
                     </div>
                     <div className="detail-wrapper">
-                        <div className="headerWrapper">Fill in the information</div>
+                        <div className="headerWrapper">Person information</div>
                         <div className="detail-text-wrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID : {person.id}</div>
                         <div className="detail-text-wrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name : {person.name}</div>
                         <div className="detail-text-wrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position : {person.position}</div>

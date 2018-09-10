@@ -52,7 +52,7 @@ class EditPerson extends Component {
             <div>
                 <Banner />
                 <div className="edit-container">
-                    <div className="image-wrapper">
+                    <div className="edit-image-wrapper">
                         <div className="imgPreview">
                             <img src="../assets/images/noprofilemale.gif"/>
                         </div>
