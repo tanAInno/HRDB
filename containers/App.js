@@ -3,18 +3,17 @@ import Banner from '../components/banner';
 import NavBar from '../components/navbar';
 import Card from '../components/card';
 import {connect} from 'react-redux';
+import {setCardlist, setPermaCardList} from '../actions/cardlist';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdBadge, faFileSignature, faBriefcase, faBuilding, faSearch } from '@fortawesome/free-solid-svg-icons'
+import '../css/app.css'
 
 library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,faSearch)
 
 class App extends Component {
-    state = {
-        cardList : []
-    }
 
     componentDidMount() {
         axios.get("http://localhost:8000/api/contacts/")
@@ -29,26 +28,27 @@ class App extends Component {
                     department : c.department     
                 })
             })
-            this.setState({cardList : card_list})
+        this.props.dispatch(setPermaCardList(card_list))
+        this.props.dispatch(setCardlist(card_list))
         }).catch(error => console.log(error))
     }
 
     render () {
         return (
-            <div style={container}>
-                <div style={wrapper}>
-                    <Banner style={banner}/>
-                    <div style={contentContainer}>
-                        <NavBar style={navbar}/>
-                        <div style={content}>
-                            <div style={headerContainer}>
-                                <div style={searchResultText}>Search Results</div>
-                                <Link style={addButtonWrapper} to="/add">
-                                    <button style={addButton}>Add +</button>
+            <div className="app-container">
+                <div className="app-wrapper">
+                    <Banner className="app-banner"/>
+                    <div className="app-content-container">
+                        <NavBar className="navbar"/>
+                        <div className="content">
+                            <div className="app-header-container">
+                                <div className="search-result-text">Search Results</div>
+                                <Link className="app-add-button-wrapper" to="/add">
+                                    <button className="app-add-button">Add +</button>
                                 </Link>
                             </div>
-                            <div style={cardContainer}>
-                                {this.state.cardList.map((data, index) => {
+                            <div className="app-card-container">
+                                {this.props.cardlistReducer.cardlist.map((data, index) => {
                                     return(
                                         <Card 
                                             id = { data.id }
@@ -68,72 +68,4 @@ class App extends Component {
     }
 }
 
-export default App;
-
-const container = {
-    width: '100%'
-}
-
-const wrapper = {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    width: '100%'
-}
-
-const contentContainer = {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'row',
-}
-
-const content = {
-    width: '80%',
-    height: window.innerHeight + 'px'
-}
-
-const cardContainer = {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-}
-
-const navbar = {
-    width: '20%',
-    height: window.innerHeight + 'px'
-}
-
-const banner = {
-    width: '100%',
-    height: '100%'
-}
-
-const headerContainer = {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'row',
-    marginTop: '5px',
-    justifyContent: 'center',
-    alignItems: 'center'
-}
-
-const searchResultText = {
-    fontSize: '24px',
-    marginLeft: '7px'
-}
-
-const addButton = {
-    width: '100%',
-    height: '37px',
-    backgroundColor: '#00007f',
-    border: '2px solid #00004c',
-    color: 'white',
-    borderRadius: '5px',
-    fontSize: '16px'
-}
-
-const addButtonWrapper = {
-    width: '8%',
-    height: '37px',
-    marginLeft: 'auto'
-}
+export default connect(state => state)(App);

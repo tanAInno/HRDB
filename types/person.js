@@ -1,2 +1,4 @@
 export const SET_PERSON = 'SET_PERSON';
 export const SET_PERSON_ID = 'SET_PERSON_ID';
+export const SET_CARDLIST = 'SET_CARDLIST';
+export const SET_PERMA_CARDLIST = 'SET_PERMA_CARDLIST';
