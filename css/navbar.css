@@ -47,10 +47,23 @@
 }
 
 .search-button {
-    width: 40%;
+    width: 47%;
     height: 35px;
     background: #00007f;
     border: 2px solid #00004c;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 8px;
+    margin-top: 10px;
+    float: right;
+}
+
+.clear-button {
+    width: 47%;
+    height: 35px;
+    background: #e59400;
+    border: 2px solid #996300;
     color: white;
     border-radius: 5px;
     font-size: 16px;

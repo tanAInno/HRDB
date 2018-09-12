@@ -14,7 +14,9 @@ class AddPerson extends Component {
             employee_id: '',
             name: '',
             position: '',
-            department: ''};
+            department: '',
+            imageUrl: ''
+        };
     }
 
     handleSubmit(e) {

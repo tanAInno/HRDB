@@ -26,6 +26,7 @@ class NavBar extends Component {
     _onSubmit = () => {
         const filter_list = []
         const card_list = this.props.cardlistReducer.permCardlist;
+        console.log(" i "+this.state.id+" n "+this.state.name+" p "+this.state.position+" d "+this.state.department)
         for(let i=0; i < card_list.length; i++){
             if(card_list[i].employee_id.match(this.state.id) || this.state.id.length <= 0)
             if(card_list[i].name.toLowerCase().match(this.state.name) || this.state.name.length <= 0)
@@ -34,7 +35,14 @@ class NavBar extends Component {
                 filter_list.push(card_list[i])
         }
         this.props.dispatch(setCardlist(filter_list))
-    } 
+    }
+    
+    _onClear = () => {
+        this.setState({id : ''})
+        this.setState({name : ''})
+        this.setState({position : ''})
+        this.setState({department : ''},() => this._onSubmit())
+    }
 
     _handleKeyPress = (e) => {
         if (e.key === 'Enter') 
@@ -72,6 +80,10 @@ class NavBar extends Component {
                         value={this.state.department}
                         onChange={e => this._onChange("department",e.target.value)}
                         onKeyPress={this._handleKeyPress}></input>
+                    <button className="clear-button"
+                        onClick={this._onClear}>
+                        Clear
+                    </button>
                     <button className="search-button"
                         onClick={this._onSubmit}>
                         Search

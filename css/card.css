@@ -2,7 +2,8 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    width: 99.5%;
+    width: 99%;
+    background: #f0f0f0;
     border: 2px solid #696969;
     border-radius: 5px;
     margin-top: 5px;

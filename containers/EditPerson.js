@@ -11,7 +11,8 @@ class EditPerson extends Component {
         personID : '',
         personName : '',
         personPosition : '',
-        personDepartment : ''
+        personDepartment : '',
+        imagePreviewUrl: '',
     }
 
     componentDidMount(){
@@ -24,6 +25,28 @@ class EditPerson extends Component {
             this.setState({personPosition : response.data.data.position})
             this.setState({personDepartment : response.data.data.department})
         }).catch(error => console.log(error))
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        // TODO: do something with -> this.state.file
+        console.log('handle uploading-', this.state.file);
+    }
+
+    handleImageChange(e) {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+          this.setState({
+            file: file,
+            imagePreviewUrl: reader.result
+          });
+        }
+
+        reader.readAsDataURL(file)
     }
 
     _onChange = (key,value) => {
@@ -48,16 +71,36 @@ class EditPerson extends Component {
     }
 
     render() {
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+          $imagePreview = (<img src={imagePreviewUrl} />);
+        } else {
+          $imagePreview = (<img src="../assets/images/noprofilemale.gif" />);
+        }
+
         return (
             <div>
                 <Banner />
                 <div className="edit-container">
-                    <div className="edit-image-wrapper">
-                        <div className="imgPreview">
-                            <img src="../assets/images/noprofilemale.gif"/>
+                    <div className="previewWrapper">
+                    <div className="previewComponent">
+                        <form onSubmit={(e)=>this.handleSubmit(e)}>
+                            <input className="fileInput" 
+                                type="file" 
+                                onChange={(e)=>this.handleImageChange(e)}/>
+                            <button className="submitButton" 
+                                type="submit"
+                                onClick={(e)=>this.handleSubmit(e)}>
+                                Upload Image
+                            </button>
+                            </form>
+                            <div className="imgPreview">
+                                {$imagePreview}
+                            </div>
                         </div>
                     </div>
-                    <div className="detail-wrapper">
+                    <div className="edit-detail-wrapper">
                         <div className="headerWrapper">Fill in the information</div>
                         <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
                         <input type="text" 
