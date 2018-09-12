@@ -24,6 +24,7 @@ class App extends Component {
                     id : c._id,
                     employee_id : c.employee_id,
                     name : c.name,
+                    image : c.image,
                     position : c.position,
                     department : c.department     
                 })
@@ -54,6 +55,7 @@ class App extends Component {
                                             id = { data.id }
                                             employee_id={ data.employee_id }
                                             name={ data.name }
+                                            image={ data.image }
                                             position={ data.position }
                                             department={ data.department }
                                         />

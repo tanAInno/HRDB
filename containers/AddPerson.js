@@ -4,18 +4,21 @@ import Banner from '../components/banner';
 import axios from 'axios'
 import '../css/addperson.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import firebase from 'firebase'
+import FileUploader from 'react-firebase-file-uploader'
 
 class AddPerson extends Component {
     constructor(props) {
         super(props);
         this.state = {
             file: '',
-            imagePreviewUrl: '',
+            imagePreviewUrl: '../assets/images/noprofilemale.gif',
             employee_id: '',
             name: '',
             position: '',
             department: '',
-            imageUrl: ''
+            image: '',
+            isUploading: false
         };
     }
 
@@ -25,27 +28,12 @@ class AddPerson extends Component {
         console.log('handle uploading-', this.state.file);
     }
 
-    handleImageChange(e) {
-        e.preventDefault();
-
-        let reader = new FileReader();
-        let file = e.target.files[0];
-
-        reader.onloadend = () => {
-          this.setState({
-            file: file,
-            imagePreviewUrl: reader.result
-          });
-        }
-
-        reader.readAsDataURL(file)
-    }
-
     async addPerson() {
         console.log("in add")
         await axios.post("http://localhost:8000/api/contacts/",{
             employee_id: this.state.employee_id,
             name: this.state.name,
+            image: this.state.imagePreviewUrl,
             position: this.state.position,
             department: this.state.department
         }).catch(error => console.log(error))
@@ -63,6 +51,22 @@ class AddPerson extends Component {
             this.setState({department : e.target.value})
     }
 
+    handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+    handleProgress = progress => this.setState({ progress });
+    handleUploadError = error => {
+        this.setState({ isUploading: false });
+        console.error(error);
+    };
+    handleUploadSuccess = filename => {
+        this.setState({ image: filename, progress: 100, isUploading: false });
+        firebase
+        .storage()
+        .ref("images")
+        .child(filename)
+        .getDownloadURL()
+        .then(url => this.setState({ imagePreviewUrl: url }));
+    };
+
     render () {
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
@@ -79,14 +83,17 @@ class AddPerson extends Component {
               <div className="previewWrapper">
                 <div className="previewComponent">
                     <form onSubmit={(e)=>this.handleSubmit(e)}>
-                        <input className="fileInput" 
-                          type="file" 
-                          onChange={(e)=>this.handleImageChange(e)}/>
-                        <button className="submitButton" 
-                          type="submit"
-                          onClick={(e)=>this.handleSubmit(e)}>
-                            Upload Image
-                        </button>
+                        <FileUploader
+                            className="fileInput"
+                            accept="image/*"
+                            name="image"
+                            randomizeFilename
+                            storageRef={firebase.storage().ref("images")}
+                            onUploadStart={this.handleUploadStart}
+                            onUploadError={this.handleUploadError}
+                            onUploadSuccess={this.handleUploadSuccess}
+                            onProgress={this.handleProgress}
+                        />
                     </form>
                     <div className="imgPreview">
                         {$imagePreview}

@@ -5,6 +5,8 @@ import '../css/editperson.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import firebase from 'firebase';
+import FileUploader from 'react-firebase-file-uploader'
 
 class EditPerson extends Component {
     state = {
@@ -24,6 +26,7 @@ class EditPerson extends Component {
             this.setState({personName :  response.data.data.name})
             this.setState({personPosition : response.data.data.position})
             this.setState({personDepartment : response.data.data.department})
+            this.setState({imagePreviewUrl: response.data.data.image})
         }).catch(error => console.log(error))
     }
 
@@ -64,11 +67,28 @@ class EditPerson extends Component {
         await axios.put("http://localhost:8000/api/contacts/"+this.props.personIDReducer.personid,{
             employee_id: this.state.personID,
             name: this.state.personName,
+            image: this.state.imagePreviewUrl,
             position: this.state.personPosition,
             department: this.state.personDepartment
         }).catch(error => console.log(error))
         location.reload()
     }
+
+    handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+    handleProgress = progress => this.setState({ progress });
+    handleUploadError = error => {
+        this.setState({ isUploading: false });
+        console.error(error);
+    };
+    handleUploadSuccess = filename => {
+        this.setState({ image: filename, progress: 100, isUploading: false });
+        firebase
+        .storage()
+        .ref("images")
+        .child(filename)
+        .getDownloadURL()
+        .then(url => this.setState({ imagePreviewUrl: url }));
+    };
 
     render() {
         let {imagePreviewUrl} = this.state;
@@ -86,14 +106,17 @@ class EditPerson extends Component {
                     <div className="previewWrapper">
                     <div className="previewComponent">
                         <form onSubmit={(e)=>this.handleSubmit(e)}>
-                            <input className="fileInput" 
-                                type="file" 
-                                onChange={(e)=>this.handleImageChange(e)}/>
-                            <button className="submitButton" 
-                                type="submit"
-                                onClick={(e)=>this.handleSubmit(e)}>
-                                Upload Image
-                            </button>
+                            <FileUploader
+                                className="fileInput"
+                                accept="image/*"
+                                name="image"
+                                randomizeFilename
+                                storageRef={firebase.storage().ref("images")}
+                                onUploadStart={this.handleUploadStart}
+                                onUploadError={this.handleUploadError}
+                                onUploadSuccess={this.handleUploadSuccess}
+                                onProgress={this.handleProgress}
+                            />
                             </form>
                             <div className="imgPreview">
                                 {$imagePreview}

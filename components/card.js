@@ -54,7 +54,7 @@ class Card extends Component {
     }
 
     onView = () => {
-        this.props.dispatch(setPerson({id : this.props.employee_id,name : this.props.name,
+        this.props.dispatch(setPerson({id : this.props.employee_id,name : this.props.name, image : this.props.image,
                                     position : this.props.position,department : this.props.department}))
     }
 
@@ -66,7 +66,7 @@ class Card extends Component {
     render() {
         return (
             <div className="card-container">
-                <img className="image-container" src="../assets/images/noprofilemale.gif"/>
+                <img className="image-container" src={this.props.image}/>
                 <div className="detail-container">
                     <div className="text-wrapper" style={{marginTop: '5px'}}>ID : {this.props.employee_id}</div>
                     <div className="text-wrapper">Name : {this.props.name}</div>

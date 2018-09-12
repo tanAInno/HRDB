@@ -14,7 +14,7 @@ class ViewPerson extends Component {
                 <div className="view-container">
                     <div className="image-wrapper">
                         <div className="imgPreview">
-                            <img src="../assets/images/noprofilemale.gif" />
+                            <img src={person.image} />
                         </div>
                     </div>
                     <div className="detail-wrapper">
