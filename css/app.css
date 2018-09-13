@@ -30,6 +30,8 @@
     width: 80%;
     height: 100vh;
     background: #f5ffff;
+    margin-left: 20%;
+    margin-top: 100px;
 }
 
 .app-header-container {

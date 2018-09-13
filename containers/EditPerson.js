@@ -14,6 +14,10 @@ class EditPerson extends Component {
         personName : '',
         personPosition : '',
         personDepartment : '',
+        personStatus : '',
+        personPhone : '',
+        personEmail : '',
+        personLastEdited : '',
         imagePreviewUrl: '',
     }
 
@@ -26,6 +30,9 @@ class EditPerson extends Component {
             this.setState({personName :  response.data.data.name})
             this.setState({personPosition : response.data.data.position})
             this.setState({personDepartment : response.data.data.department})
+            this.setState({personStatus : response.data.data.status})
+            this.setState({personPhone : response.data.data.phone})
+            this.setState({personEmail : response.data.data.email})
             this.setState({imagePreviewUrl: response.data.data.image})
         }).catch(error => console.log(error))
     }
@@ -61,6 +68,12 @@ class EditPerson extends Component {
             this.setState({personPosition : value})
         if(key == "department")
             this.setState({personDepartment : value})
+        if(key == "status")
+            this.setState({personStatus : value})
+        if(key == "phone")
+            this.setState({personPhone : value})
+        if(key == "email")
+            this.setState({personEmail : value})
     }
 
     async editPerson() {
@@ -69,7 +82,10 @@ class EditPerson extends Component {
             name: this.state.personName,
             image: this.state.imagePreviewUrl,
             position: this.state.personPosition,
-            department: this.state.personDepartment
+            department: this.state.personDepartment,
+            status: this.state.personStatus,
+            phone: this.state.personPhone,
+            email: this.state.personEmail
         }).catch(error => console.log(error))
         location.reload()
     }
@@ -145,6 +161,21 @@ class EditPerson extends Component {
                             className="input-field" 
                             value={this.state.personDepartment}
                             onChange={e => this._onChange("department",e.target.value)}></input>
+                        <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
+                        <input type="text" 
+                            className="input-field" 
+                            value={this.state.personStatus}
+                            onChange={e => this._onChange("status",e.target.value)}></input>
+                        <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
+                        <input type="text" 
+                            className="input-field" 
+                            value={this.state.personPhone}
+                            onChange={e => this._onChange("phone",e.target.value)}></input>
+                        <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
+                        <input type="text" 
+                            className="input-field" 
+                            value={this.state.personEmail}
+                            onChange={e => this._onChange("email",e.target.value)}></input>
                         <div className="add-button-wrapper">
                             <Link to="/"><button className="submit-button" onClick={() => {this.editPerson()}}>Submit</button></Link>
                             <Link to="/"><button className="cancel-button">Cancel</button></Link>

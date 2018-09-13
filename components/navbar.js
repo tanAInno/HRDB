@@ -9,7 +9,10 @@ class NavBar extends Component {
         id : '',
         name : '',
         position : '',
-        department : ''
+        department : '',
+        status : '',
+        phone : '',
+        email : ''
     }
 
     _onChange = (key,value) => {
@@ -21,17 +24,27 @@ class NavBar extends Component {
             this.setState({position : value})
         if(key == "department")
             this.setState({department : value})
+        if(key == "status")
+            this.setState({status : value})
+        if(key == "phone")
+            this.setState({phone : value})
+        if(key == "email")
+            this.setState({email : value})
+        if(key == "last_edited")
+            this.setState({last_edited : value})
     }
 
     _onSubmit = () => {
         const filter_list = []
         const card_list = this.props.cardlistReducer.permCardlist;
-        console.log(" i "+this.state.id+" n "+this.state.name+" p "+this.state.position+" d "+this.state.department)
         for(let i=0; i < card_list.length; i++){
             if(card_list[i].employee_id.match(this.state.id) || this.state.id.length <= 0)
-            if(card_list[i].name.toLowerCase().match(this.state.name) || this.state.name.length <= 0)
-            if(card_list[i].position.toLowerCase().match(this.state.position) || this.state.position.length <= 0)
-            if(card_list[i].department.toLowerCase().match(this.state.department) || this.state.department.length <= 0)
+            if(card_list[i].name.toLowerCase().match(this.state.name.toLowerCase()) || this.state.name.length <= 0)
+            if(card_list[i].position.toLowerCase().match(this.state.position.toLowerCase()) || this.state.position.length <= 0)
+            if(card_list[i].department.toLowerCase().match(this.state.department.toLowerCase()) || this.state.department.length <= 0)
+            if(card_list[i].status.toLowerCase().match(this.state.status.toLowerCase()) || this.state.status.length <= 0)
+            if(card_list[i].phone.toLowerCase().match(this.state.phone.toLowerCase()) || this.state.phone.length <= 0)
+            if(card_list[i].email.toLowerCase().match(this.state.email.toLowerCase()) || this.state.email.length <= 0)
                 filter_list.push(card_list[i])
         }
         this.props.dispatch(setCardlist(filter_list))
@@ -79,6 +92,24 @@ class NavBar extends Component {
                         className="nav-input-field"
                         value={this.state.department}
                         onChange={e => this._onChange("department",e.target.value)}
+                        onKeyPress={this._handleKeyPress}></input>
+                    <div className="nav-text-wrapper"><FontAwesomeIcon icon="check-circle" className="nav-icon" /> Status</div>
+                    <input type="text" 
+                        className="nav-input-field"
+                        value={this.state.status}
+                        onChange={e => this._onChange("status",e.target.value)}
+                        onKeyPress={this._handleKeyPress}></input>
+                    <div className="nav-text-wrapper"><FontAwesomeIcon icon="phone-square" className="nav-icon" /> Phone No.</div>
+                    <input type="text" 
+                        className="nav-input-field"
+                        value={this.state.phone}
+                        onChange={e => this._onChange("phone",e.target.value)}
+                        onKeyPress={this._handleKeyPress}></input>
+                    <div className="nav-text-wrapper"><FontAwesomeIcon icon="envelope" className="nav-icon" /> E-mail</div>
+                    <input type="text" 
+                        className="nav-input-field"
+                        value={this.state.email}
+                        onChange={e => this._onChange("email",e.target.value)}
                         onKeyPress={this._handleKeyPress}></input>
                     <button className="clear-button"
                         onClick={this._onClear}>

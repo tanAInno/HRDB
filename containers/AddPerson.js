@@ -17,6 +17,10 @@ class AddPerson extends Component {
             name: '',
             position: '',
             department: '',
+            status: '',
+            phone: '',
+            email: '',
+            last_edited : '',
             image: '',
             isUploading: false
         };
@@ -35,7 +39,11 @@ class AddPerson extends Component {
             name: this.state.name,
             image: this.state.imagePreviewUrl,
             position: this.state.position,
-            department: this.state.department
+            department: this.state.department,
+            status: this.state.status,
+            phone: this.state.phone,
+            email: this.state.email,
+            last_edited: this.state.last_edited
         }).catch(error => console.log(error))
         location.reload()
     }
@@ -49,6 +57,14 @@ class AddPerson extends Component {
             this.setState({position : e.target.value})
         if(key == "department")
             this.setState({department : e.target.value})
+        if(key == "status")
+            this.setState({status : e.target.value})
+        if(key == "phone")
+            this.setState({phone : e.target.value})
+        if(key == "email")
+            this.setState({email : e.target.value})
+        if(key == "last_edited")
+            this.setState({last_edited : e.target.value})
     }
 
     handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -101,28 +117,43 @@ class AddPerson extends Component {
                 </div>
               </div>
               <div className="inputWrapper">
-                  <div className="headerWrapper">Fill in the information</div>
-                  <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
-                  <input type="text" 
-                      className="input-field" 
-                      value={this.state.employee_id}
-                      onChange={e => this.handleChangeWithKey("id",e)}></input>
-                  <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
-                  <input type="text" 
-                      className="input-field" 
-                      value={this.state.name}
-                      onChange={e => this.handleChangeWithKey("name",e)}></input>
-                  <div className="textWrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position</div>
-                  <input type="text" 
-                      className="input-field" 
-                      value={this.state.position}
-                      onChange={e => this.handleChangeWithKey("position",e)}></input>
-                  <div className="textWrapper"><FontAwesomeIcon icon="building" className="icon" /> Department</div>
-                  <input type="text" 
-                      className="input-field" 
-                      value={this.state.department}
-                      onChange={e => this.handleChangeWithKey("department",e)}></input>
-                  <div className="add-button-wrapper">
+                    <div className="headerWrapper">Fill in the information</div>
+                    <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.employee_id}
+                        onChange={e => this.handleChangeWithKey("id",e)}></input>
+                    <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.name}
+                        onChange={e => this.handleChangeWithKey("name",e)}></input>
+                    <div className="textWrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.position}
+                        onChange={e => this.handleChangeWithKey("position",e)}></input>
+                    <div className="textWrapper"><FontAwesomeIcon icon="building" className="icon" /> Department</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.department}
+                        onChange={e => this.handleChangeWithKey("department",e)}></input>
+                    <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.status}
+                        onChange={e => this.handleChangeWithKey("status",e)}></input>
+                    <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.phone}
+                        onChange={e => this.handleChangeWithKey("phone",e)}></input>
+                    <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.email}
+                        onChange={e => this.handleChangeWithKey("email",e)}></input>
+                    <div className="add-button-wrapper">
                     <Link to="/"><button className="submit-button" onClick={() => {this.addPerson()}}>Submit</button></Link>
                     <Link to="/"><button className="cancel-button">Cancel</button></Link>
                   </div>

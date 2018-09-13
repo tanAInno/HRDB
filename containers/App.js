@@ -8,10 +8,10 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIdBadge, faFileSignature, faBriefcase, faBuilding, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faIdBadge, faFileSignature, faBriefcase, faBuilding, faSearch, faCheckCircle, faPhoneSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import '../css/app.css'
 
-library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,faSearch)
+library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,faSearch,faCheckCircle,faPhoneSquare,faEnvelope)
 
 class App extends Component {
 
@@ -26,7 +26,11 @@ class App extends Component {
                     name : c.name,
                     image : c.image,
                     position : c.position,
-                    department : c.department     
+                    department : c.department,
+                    status : c.status,
+                    phone : c.phone,
+                    email : c.email,
+                    last_edited : c.last_edited     
                 })
             })
         this.props.dispatch(setPermaCardList(card_list))
@@ -58,6 +62,10 @@ class App extends Component {
                                             image={ data.image }
                                             position={ data.position }
                                             department={ data.department }
+                                            status={ data.status }
+                                            phone={ data.phone }
+                                            email={ data.email }
+                                            last_edited={ data.last_edited }
                                         />
                                     )
                                 })}

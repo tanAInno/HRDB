@@ -19,9 +19,13 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    width: 100%;
+    width: 20%;
     height: 100vh;
     background: #4b738e;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    overflow-x: hidden;
 }
 
 .nav-text-wrapper {

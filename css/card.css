@@ -13,7 +13,21 @@
 .detail-container {
     display: flex;
     flex: 1;
+    flex-direction: row;
+}
+
+.first-row-detail-container {
+    display: flex;
+    flex: 1;
     flex-direction: column;
+    width: 50%;
+}
+
+.second-row-detail-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 50%;
 }
 
 .image-container {
