@@ -10,14 +10,17 @@ import FileUploader from 'react-firebase-file-uploader'
 
 class EditPerson extends Component {
     state = {
-        personID : '',
-        personName : '',
-        personPosition : '',
-        personDepartment : '',
-        personStatus : '',
-        personPhone : '',
-        personEmail : '',
-        personLastEdited : '',
+        id : '',
+        name : '',
+        position : '',
+        department : '',
+        status : '',
+        phone : '',
+        email : '',
+        wifi_password: '',
+        printer_password: '',
+        assets: '',
+        last_edited : '',
         imagePreviewUrl: '',
     }
 
@@ -26,13 +29,16 @@ class EditPerson extends Component {
         axios.get("http://localhost:8000/api/contacts/"+this.props.personIDReducer.personid)
         .then(response => {
             console.log(response)
-            this.setState({personID : response.data.data.employee_id})
-            this.setState({personName :  response.data.data.name})
-            this.setState({personPosition : response.data.data.position})
-            this.setState({personDepartment : response.data.data.department})
-            this.setState({personStatus : response.data.data.status})
-            this.setState({personPhone : response.data.data.phone})
-            this.setState({personEmail : response.data.data.email})
+            this.setState({id : response.data.data.employee_id})
+            this.setState({name :  response.data.data.name})
+            this.setState({position : response.data.data.position})
+            this.setState({department : response.data.data.department})
+            this.setState({status : response.data.data.status})
+            this.setState({phone : response.data.data.phone})
+            this.setState({email : response.data.data.email})
+            this.setState({wifi_password : response.data.data.wifi_password})
+            this.setState({printer_password : response.data.data.printer_password})
+            this.setState({assets : response.data.data.assets})
             this.setState({imagePreviewUrl: response.data.data.image})
         }).catch(error => console.log(error))
     }
@@ -60,32 +66,50 @@ class EditPerson extends Component {
     }
 
     _onChange = (key,value) => {
+        let tempDate = new Date()
+        let date = this.pad(tempDate.getDate())+'-'+this.pad(tempDate.getMonth())+'-'+tempDate.getFullYear()
+        console.log(date)
+        this.setState({ last_edited : date })
         if(key == "id")
-            this.setState({personID : value})
+            this.setState({id : value})
         if(key == "name")
-            this.setState({personName : value})
+            this.setState({name : value})
         if(key == "position")
-            this.setState({personPosition : value})
+            this.setState({position : value})
         if(key == "department")
-            this.setState({personDepartment : value})
+            this.setState({department : value})
         if(key == "status")
-            this.setState({personStatus : value})
+            this.setState({status : value})
         if(key == "phone")
-            this.setState({personPhone : value})
+            this.setState({phone : value})
         if(key == "email")
-            this.setState({personEmail : value})
+            this.setState({email : value})
+        if(key == "wifi_password")
+            this.setState({wifi_password : value})
+        if(key == "printer_password")
+            this.setState({printer_password : value})
+        if(key == "assets")
+            this.setState({assets : value})
+    }
+
+    pad = (n) => {
+        return (n < 10) ? ("0" + n) : n;
     }
 
     async editPerson() {
         await axios.put("http://localhost:8000/api/contacts/"+this.props.personIDReducer.personid,{
-            employee_id: this.state.personID,
-            name: this.state.personName,
+            employee_id: this.state.id,
+            name: this.state.name,
             image: this.state.imagePreviewUrl,
-            position: this.state.personPosition,
-            department: this.state.personDepartment,
-            status: this.state.personStatus,
-            phone: this.state.personPhone,
-            email: this.state.personEmail
+            position: this.state.position,
+            department: this.state.department,
+            status: this.state.status,
+            phone: this.state.phone,
+            email: this.state.email,
+            last_edited: this.state.last_edited,
+            wifi_password: this.state.wifi_password,
+            printer_password: this.state.printer_password,
+            assets: this.state.assets
         }).catch(error => console.log(error))
         location.reload()
     }
@@ -141,41 +165,67 @@ class EditPerson extends Component {
                     </div>
                     <div className="edit-detail-wrapper">
                         <div className="headerWrapper">Fill in the information</div>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personID} 
+                            value={this.state.id} 
                             onChange={e => this._onChange("id",e.target.value)}></input>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personName}
+                            value={this.state.name}
                             onChange={e => this._onChange("name",e.target.value)}></input>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personPosition}
+                            value={this.state.position}
                             onChange={e => this._onChange("position",e.target.value)}></input>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="building" className="icon" /> Department</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personDepartment}
+                            value={this.state.department}
                             onChange={e => this._onChange("department",e.target.value)}></input>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personStatus}
+                            value={this.state.status}
                             onChange={e => this._onChange("status",e.target.value)}></input>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personPhone}
+                            value={this.state.phone}
                             onChange={e => this._onChange("phone",e.target.value)}></input>
+                        
                         <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
                         <input type="text" 
                             className="input-field" 
-                            value={this.state.personEmail}
+                            value={this.state.email}
                             onChange={e => this._onChange("email",e.target.value)}></input>
+                        
+                        <div className="textWrapper"><FontAwesomeIcon icon="wifi" className="icon" /> Wi-Fi Password</div>
+                        <input type="text" 
+                            className="input-field" 
+                            value={this.state.wifi_password}
+                            onChange={e => this._onChange("wifi_password",e.target.value)}></input>
+                        
+                        <div className="textWrapper"><FontAwesomeIcon icon="print" className="icon" /> Printer Password</div>
+                        <input type="text" 
+                            className="input-field" 
+                            value={this.state.printer_password}
+                            onChange={e => this._onChange("printer_password",e.target.value)}></input>
+
+                        <div className="textWrapper"><FontAwesomeIcon icon="laptop" className="icon" /> Assets</div>
+                        <textarea type="text" 
+                            className="textarea-field" 
+                            value={this.state.assets}
+                            onChange={e => this._onChange("assets",e.target.value)}></textarea>
+
                         <div className="add-button-wrapper">
                             <Link to="/"><button className="submit-button" onClick={() => {this.editPerson()}}>Submit</button></Link>
                             <Link to="/"><button className="cancel-button">Cancel</button></Link>

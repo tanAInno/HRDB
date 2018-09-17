@@ -8,10 +8,14 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIdBadge, faFileSignature, faBriefcase, faBuilding, faSearch, faCheckCircle, faPhoneSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faIdBadge, faFileSignature, faBriefcase, faBuilding, 
+    faSearch, faCheckCircle, faPhoneSquare, faEnvelope, faWifi, 
+    faPrint, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import '../css/app.css'
 
-library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,faSearch,faCheckCircle,faPhoneSquare,faEnvelope)
+library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,
+    faSearch,faCheckCircle,faPhoneSquare,faEnvelope,faWifi,faPrint
+    ,faLaptop)
 
 class App extends Component {
 
@@ -30,7 +34,10 @@ class App extends Component {
                     status : c.status,
                     phone : c.phone,
                     email : c.email,
-                    last_edited : c.last_edited     
+                    last_edited : c.last_edited,
+                    wifi_password : c.wifi_password,
+                    printer_password : c.printer_password,
+                    assets : c.assets,     
                 })
             })
         this.props.dispatch(setPermaCardList(card_list))
@@ -66,6 +73,9 @@ class App extends Component {
                                             phone={ data.phone }
                                             email={ data.email }
                                             last_edited={ data.last_edited }
+                                            wifi_password={ data.wifi_password }
+                                            printer_password={ data.printer_password }
+                                            assets={ data.assets }
                                         />
                                     )
                                 })}

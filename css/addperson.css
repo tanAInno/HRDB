@@ -6,6 +6,7 @@
 }
 
 .previewWrapper {
+    margin-top: 40px;
     width: 35%;
 }
 
@@ -59,14 +60,22 @@
 
 .input-field {
     width: 98%;
-    height: 24px;
-    font-size: 24px;
+    height: 20px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.textarea-field {
+    width: 98%;
+    height: 60px;
+    font-size: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 .textWrapper {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .headerWrapper {

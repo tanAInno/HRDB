@@ -21,6 +21,9 @@ class AddPerson extends Component {
             phone: '',
             email: '',
             last_edited : '',
+            wifi_password: '',
+            assets: '',
+            printer_password: '',
             image: '',
             isUploading: false
         };
@@ -43,12 +46,23 @@ class AddPerson extends Component {
             status: this.state.status,
             phone: this.state.phone,
             email: this.state.email,
-            last_edited: this.state.last_edited
+            last_edited: this.state.last_edited,
+            wifi_password: this.state.wifi_password,
+            assets: this.state.assets,
+            printer_password: this.state.printer_password,
         }).catch(error => console.log(error))
         location.reload()
     }
 
+    pad = (n) => {
+        return (n < 10) ? ("0" + n) : n;
+    }
+
     handleChangeWithKey = (key,e) => {
+        let tempDate = new Date()
+        let date = this.pad(tempDate.getDate())+'-'+this.pad(tempDate.getMonth())+'-'+tempDate.getFullYear()
+        console.log(date)
+        this.setState({ last_edited : date })
         if(key == "id")
             this.setState({employee_id : e.target.value})
         if(key == "name")
@@ -63,8 +77,12 @@ class AddPerson extends Component {
             this.setState({phone : e.target.value})
         if(key == "email")
             this.setState({email : e.target.value})
-        if(key == "last_edited")
-            this.setState({last_edited : e.target.value})
+        if(key == "wifi_password")
+            this.setState({wifi_password : e.target.value})
+        if(key == "printer_password")
+            this.setState({printer_password : e.target.value})
+        if(key == "assets")
+            this.setState({assets : e.target.value})
     }
 
     handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -123,36 +141,61 @@ class AddPerson extends Component {
                         className="input-field" 
                         value={this.state.employee_id}
                         onChange={e => this.handleChangeWithKey("id",e)}></input>
+                    
                     <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.name}
                         onChange={e => this.handleChangeWithKey("name",e)}></input>
+                    
                     <div className="textWrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.position}
                         onChange={e => this.handleChangeWithKey("position",e)}></input>
+                    
                     <div className="textWrapper"><FontAwesomeIcon icon="building" className="icon" /> Department</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.department}
                         onChange={e => this.handleChangeWithKey("department",e)}></input>
+                    
                     <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.status}
                         onChange={e => this.handleChangeWithKey("status",e)}></input>
+                    
                     <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.phone}
                         onChange={e => this.handleChangeWithKey("phone",e)}></input>
+                    
                     <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.email}
                         onChange={e => this.handleChangeWithKey("email",e)}></input>
+                    
+                    <div className="textWrapper"><FontAwesomeIcon icon="wifi" className="icon" /> Wi-Fi Password</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.wifi_password}
+                        onChange={e => this.handleChangeWithKey("wifi_password",e)}></input>
+                    
+                    <div className="textWrapper"><FontAwesomeIcon icon="print" className="icon" /> Printer Password</div>
+                    <input type="text" 
+                        className="input-field" 
+                        value={this.state.printer_password}
+                        onChange={e => this.handleChangeWithKey("printer_password",e)}></input>
+
+                    <div className="textWrapper"><FontAwesomeIcon icon="laptop" className="icon" /> Assets</div>
+                    <textarea type="text" 
+                        className="textarea-field" 
+                        value={this.state.assets}
+                        onChange={e => this.handleChangeWithKey("assets",e)}></textarea>
+                    
                     <div className="add-button-wrapper">
                     <Link to="/"><button className="submit-button" onClick={() => {this.addPerson()}}>Submit</button></Link>
                     <Link to="/"><button className="cancel-button">Cancel</button></Link>

@@ -54,9 +54,20 @@ class Card extends Component {
     }
 
     onView = () => {
-        this.props.dispatch(setPerson({id : this.props.employee_id,name : this.props.name, image : this.props.image,
-                                    position : this.props.position,department : this.props.department, status : this.props.status,
-                                    phone: this.props.phone, email: this.props.email, last_edited: this.props.last_edited}))
+        this.props.dispatch(setPerson({
+                                    id : this.props.employee_id, 
+                                    name : this.props.name, 
+                                    image : this.props.image, 
+                                    position : this.props.position,
+                                    department : this.props.department, 
+                                    status : this.props.status,
+                                    phone: this.props.phone, 
+                                    email: this.props.email, 
+                                    last_edited: this.props.last_edited,
+                                    wifi_password: this.props.wifi_password, 
+                                    printer_password: this.props.printer_password,
+                                    assets: this.props.assets
+                                    }))
     }
 
     onEdit = () => {
@@ -68,19 +79,24 @@ class Card extends Component {
         return (
             <div className="card-container">
                 <img className="image-container" src={this.props.image}/>
-                <div className="detail-container">
-                    <div className="first-row-detail-container">
-                        <div className="text-wrapper" style={{marginTop: '5px'}}>ID : {this.props.employee_id}</div>
-                        <div className="text-wrapper">Name : {this.props.name}</div>
-                        <div className="text-wrapper">Position : {this.props.position}</div>
-                        <div className="text-wrapper">Department : {this.props.department}</div>
+                <div className="detail-container-wrapper">
+                    <div className="detail-container">
+                        <div className="first-row-detail-container">
+                            <div className="text-wrapper" style={{marginTop: '5px'}}>ID : {this.props.employee_id}</div>
+                            <div className="text-wrapper">Name : {this.props.name}</div>
+                            <div className="text-wrapper">Position : {this.props.position}</div>
+                            <div className="text-wrapper">Department : {this.props.department}</div>
+                            <div className="text-wrapper">Wifi-Password : {this.props.wifi_password}</div>
+                        </div>
+                        <div className="second-row-detail-container">
+                            <div className="text-wrapper" style={{marginTop: '5px'}}>Status : {this.props.status}</div>
+                            <div className="text-wrapper">Phone No. : {this.props.phone}</div>
+                            <div className="text-wrapper">E-mail : {this.props.email}</div>
+                            <div className="text-wrapper">Last Edited : {this.props.last_edited}</div>
+                            <div className="text-wrapper">Printer Password : {this.props.printer_password}</div>
+                        </div>
                     </div>
-                    <div className="second-row-detail-container">
-                        <div className="text-wrapper" style={{marginTop: '5px'}}>Status : {this.props.status}</div>
-                        <div className="text-wrapper">Phone No. : {this.props.phone}</div>
-                        <div className="text-wrapper">E-mail : {this.props.email}</div>
-                        <div className="text-wrapper">Last Edited : {this.props.last_edited}</div>
-                    </div>
+                    <div className="text-wrapper">Assets : {this.props.assets}</div>
                 </div>
                 <div className="card-button-wrapper">
                     <Link to="/view"><button className="view-button" onClick={this.onView}>View</button></Link>
