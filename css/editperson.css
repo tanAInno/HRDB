@@ -9,3 +9,23 @@
     width: 65%;
     height: 270px;
 }
+
+.text-group-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.input-field-half {
+    width: 95%;
+    height: 20px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.input-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

@@ -137,18 +137,58 @@ class AddPerson extends Component {
               </div>
               <div className="inputWrapper">
                     <div className="headerWrapper">Fill in the information</div>
-                    <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.employee_id}
-                        onChange={e => this.handleChangeWithKey("id",e)}></input>
                     
-                    <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.name}
-                        onChange={e => this.handleChangeWithKey("name",e)}></input>
+                    <div className="text-group-wrapper">
+                        <div className="input-field-wrapper">
+                            <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
+                            <input type="text" 
+                                className="input-field-half" 
+                                value={this.state.employee_id}
+                                onChange={e => this.handleChangeWithKey("id",e)}></input>
+                        </div>
+                        <div className="input-field-wrapper">
+                            <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
+                            <input type="text" 
+                                className="input-field-half" 
+                                value={this.state.name}
+                                onChange={e => this.handleChangeWithKey("name",e)}></input>
+                        </div>
+                    </div>
                     
+                    <div className="text-group-wrapper">
+                        <div className="input-field-wrapper">
+                            <div className="textWrapper"><FontAwesomeIcon icon="wifi" className="icon" /> Wi-Fi Password</div>
+                            <input type="text" 
+                                className="input-field-half" 
+                                value={this.state.wifi_password}
+                                onChange={e => this.handleChangeWithKey("wifi_password",e)}></input>
+                        </div>
+                        <div className="input-field-wrapper">    
+                            <div className="textWrapper"><FontAwesomeIcon icon="print" className="icon" /> Printer Password</div>
+                            <input type="text" 
+                                className="input-field-half" 
+                                value={this.state.printer_password}
+                                onChange={e => this.handleChangeWithKey("printer_password",e)}></input>
+                        </div>
+                    </div>
+
+                    <div className="text-group-wrapper">        
+                        <div className="input-field-wrapper">
+                            <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
+                            <input type="text" 
+                                className="input-field-half" 
+                                value={this.state.status}
+                                onChange={e => this.handleChangeWithKey("status",e)}></input>
+                        </div>
+                        <div className="input-field-wrapper">    
+                            <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
+                            <input type="text" 
+                                className="input-field-half" 
+                                value={this.state.phone}
+                                onChange={e => this.handleChangeWithKey("phone",e)}></input>
+                        </div>
+                    </div>
+
                     <div className="textWrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position</div>
                     <input type="text" 
                         className="input-field" 
@@ -161,36 +201,12 @@ class AddPerson extends Component {
                         value={this.state.department}
                         onChange={e => this.handleChangeWithKey("department",e)}></input>
                     
-                    <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.status}
-                        onChange={e => this.handleChangeWithKey("status",e)}></input>
-                    
-                    <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.phone}
-                        onChange={e => this.handleChangeWithKey("phone",e)}></input>
-                    
                     <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
                     <input type="text" 
                         className="input-field" 
                         value={this.state.email}
                         onChange={e => this.handleChangeWithKey("email",e)}></input>
                     
-                    <div className="textWrapper"><FontAwesomeIcon icon="wifi" className="icon" /> Wi-Fi Password</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.wifi_password}
-                        onChange={e => this.handleChangeWithKey("wifi_password",e)}></input>
-                    
-                    <div className="textWrapper"><FontAwesomeIcon icon="print" className="icon" /> Printer Password</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.printer_password}
-                        onChange={e => this.handleChangeWithKey("printer_password",e)}></input>
-
                     <div className="textWrapper"><FontAwesomeIcon icon="laptop" className="icon" /> Assets</div>
                     <textarea type="text" 
                         className="textarea-field" 

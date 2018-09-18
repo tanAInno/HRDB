@@ -1,3 +1,3 @@
-const route = "http://192.168.26.37:8000/api/"
+const route = "http://192.168.28.126:8000/api/"
 
 export default route

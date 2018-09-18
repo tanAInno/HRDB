@@ -167,18 +167,57 @@ class EditPerson extends Component {
                     <div className="edit-detail-wrapper">
                         <div className="headerWrapper">Fill in the information</div>
                         
-                        <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
-                        <input type="text" 
-                            className="input-field" 
-                            value={this.state.id} 
-                            onChange={e => this._onChange("id",e.target.value)}></input>
-                        
-                        <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
-                        <input type="text" 
-                            className="input-field" 
-                            value={this.state.name}
-                            onChange={e => this._onChange("name",e.target.value)}></input>
-                        
+                        <div className="text-group-wrapper">
+                            <div className="input-field-wrapper">
+                                <div className="textWrapper"><FontAwesomeIcon icon="id-badge" className="icon" /> ID</div>
+                                <input type="text" 
+                                    className="input-field-half" 
+                                    value={this.state.id} 
+                                    onChange={e => this._onChange("id",e.target.value)}></input>
+                            </div>
+                            <div className="input-field-wrapper">
+                                <div className="textWrapper"><FontAwesomeIcon icon="file-signature" className="icon" />Name</div>
+                                <input type="text" 
+                                    className="input-field-half" 
+                                    value={this.state.name}
+                                    onChange={e => this._onChange("name",e.target.value)}></input>
+                            </div>
+                        </div>
+
+                        <div className="text-group-wrapper">
+                            <div className="input-field-wrapper">
+                                <div className="textWrapper"><FontAwesomeIcon icon="wifi" className="icon" /> Wi-Fi Password</div>
+                                <input type="text" 
+                                    className="input-field-half" 
+                                    value={this.state.wifi_password}
+                                    onChange={e => this._onChange("wifi_password",e.target.value)}></input>
+                            </div>
+                            <div className="input-field-wrapper">
+                                <div className="textWrapper"><FontAwesomeIcon icon="print" className="icon" /> Printer Password</div>
+                                <input type="text" 
+                                    className="input-field-half" 
+                                    value={this.state.printer_password}
+                                    onChange={e => this._onChange("printer_password",e.target.value)}></input>
+                            </div>
+                        </div>
+
+                        <div className="text-group-wrapper">
+                            <div className="input-field-wrapper">
+                                <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
+                                <input type="text" 
+                                    className="input-field-half" 
+                                    value={this.state.status}
+                                    onChange={e => this._onChange("status",e.target.value)}></input>
+                            </div>
+                            <div className="input-field-wrapper">    
+                                <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
+                                <input type="text" 
+                                    className="input-field-half" 
+                                    value={this.state.phone}
+                                    onChange={e => this._onChange("phone",e.target.value)}></input>
+                            </div>
+                        </div>
+
                         <div className="textWrapper"><FontAwesomeIcon icon="briefcase" className="icon" /> Position</div>
                         <input type="text" 
                             className="input-field" 
@@ -191,36 +230,13 @@ class EditPerson extends Component {
                             value={this.state.department}
                             onChange={e => this._onChange("department",e.target.value)}></input>
                         
-                        <div className="textWrapper"><FontAwesomeIcon icon="check-circle" className="icon" /> Status</div>
-                        <input type="text" 
-                            className="input-field" 
-                            value={this.state.status}
-                            onChange={e => this._onChange("status",e.target.value)}></input>
-                        
-                        <div className="textWrapper"><FontAwesomeIcon icon="phone-square" className="icon" /> Phone No.</div>
-                        <input type="text" 
-                            className="input-field" 
-                            value={this.state.phone}
-                            onChange={e => this._onChange("phone",e.target.value)}></input>
-                        
+
                         <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
                         <input type="text" 
                             className="input-field" 
                             value={this.state.email}
                             onChange={e => this._onChange("email",e.target.value)}></input>
-                        
-                        <div className="textWrapper"><FontAwesomeIcon icon="wifi" className="icon" /> Wi-Fi Password</div>
-                        <input type="text" 
-                            className="input-field" 
-                            value={this.state.wifi_password}
-                            onChange={e => this._onChange("wifi_password",e.target.value)}></input>
-                        
-                        <div className="textWrapper"><FontAwesomeIcon icon="print" className="icon" /> Printer Password</div>
-                        <input type="text" 
-                            className="input-field" 
-                            value={this.state.printer_password}
-                            onChange={e => this._onChange("printer_password",e.target.value)}></input>
-
+                    
                         <div className="textWrapper"><FontAwesomeIcon icon="laptop" className="icon" /> Assets</div>
                         <textarea type="text" 
                             className="textarea-field" 
