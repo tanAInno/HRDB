@@ -40,6 +40,9 @@ class App extends Component {
                     assets : c.assets,     
                 })
             })
+        card_list.sort(function(a,b){
+            return a.employee_id - b.employee_id
+        })
         this.props.dispatch(setPermaCardList(card_list))
         this.props.dispatch(setCardlist(card_list))
         }).catch(error => console.log(error))
