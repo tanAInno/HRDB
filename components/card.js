@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setPerson } from '../actions/person';
 import { setPersonId } from '../actions/personid';
 import Modal from 'react-modal';
+import route from '../api';
 import axios from 'axios';
 
 const customStyles = {
@@ -35,7 +36,7 @@ class Card extends Component {
     }
 
     async deletePerson() {
-        await axios.delete("http://localhost:8000/api/contacts/"+this.props.id)
+        await axios.delete(route+"contacts/"+this.props.id)
         this.closeModal()
         location.reload()
     }

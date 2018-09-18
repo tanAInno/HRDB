@@ -4,6 +4,7 @@ import Banner from '../components/banner';
 import '../css/editperson.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
+import route from '../api'
 import axios from 'axios';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader'
@@ -26,7 +27,7 @@ class EditPerson extends Component {
 
     componentDidMount(){
         console.log(this.props.personIDReducer)
-        axios.get("http://localhost:8000/api/contacts/"+this.props.personIDReducer.personid)
+        axios.get(route+"contacts/"+this.props.personIDReducer.personid)
         .then(response => {
             console.log(response)
             this.setState({id : response.data.data.employee_id})
@@ -97,7 +98,7 @@ class EditPerson extends Component {
     }
 
     async editPerson() {
-        await axios.put("http://localhost:8000/api/contacts/"+this.props.personIDReducer.personid,{
+        await axios.put(route+"contacts/"+this.props.personIDReducer.personid,{
             employee_id: this.state.id,
             name: this.state.name,
             image: this.state.imagePreviewUrl,

@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {setCardlist, setPermaCardList} from '../actions/cardlist';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import route from '../api'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdBadge, faFileSignature, faBriefcase, faBuilding, 
@@ -20,7 +21,7 @@ library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,
 class App extends Component {
 
     componentDidMount() {
-        axios.get("http://localhost:8000/api/contacts/")
+        axios.get(route+"contacts/")
         .then(response => {
             console.log(response.data.data)
             const card_list = response.data.data.map(c => {

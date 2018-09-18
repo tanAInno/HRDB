@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Banner from '../components/banner';
+import route from '../api';
 import axios from 'axios'
 import '../css/addperson.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,7 +38,7 @@ class AddPerson extends Component {
 
     async addPerson() {
         console.log("in add")
-        await axios.post("http://localhost:8000/api/contacts/",{
+        await axios.post(route+"contacts/",{
             employee_id: this.state.employee_id,
             name: this.state.name,
             image: this.state.imagePreviewUrl,
