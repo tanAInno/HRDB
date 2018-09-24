@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import route from '../api';
 import axios from 'axios';
+import Cookies from 'js-cookie'
 import '../css/login.css';
 
 class Login extends Component {
@@ -11,6 +12,13 @@ class Login extends Component {
         password: '',
         isLoggedIn: false,
         isSuccess: true,
+    }
+
+    componentDidMount(){
+        let cookie = Cookies.get('access_token')
+        console.log(cookie)
+        if(cookie != undefined && cookie != '')
+            this.setState({isLoggedIn : true})
     }
 
     _onChange(key,value) {
@@ -26,8 +34,10 @@ class Login extends Component {
             password: this.state.password
         }).then(response => {
             console.log(response)
-            if (response.data == "login success")
+            if (response.data.status == "login success"){
+                Cookies.set('access_token', response.data.accessToken, {expires:inFifteenMinutes})
                 this.setState({isLoggedIn : true})
+            }
         }).catch(error=> {
             this.setState({isSuccess : false})
             console.log(error)

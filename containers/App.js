@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import Banner from '../components/banner';
 import NavBar from '../components/navbar';
 import Card from '../components/card';
-import {connect} from 'react-redux';
-import {setCardlist, setPermaCardList} from '../actions/cardlist';
-import {Link} from 'react-router-dom';
+import Cookies from 'js-cookie'
+import { connect } from 'react-redux';
+import { setCardlist, setPermaCardList } from '../actions/cardlist';
+import { Link,Redirect } from 'react-router-dom';
 import axios from 'axios';
 import route from '../api'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -20,8 +21,24 @@ library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,
 
 class App extends Component {
 
+    state = {
+        cookieExpired : false
+    }
+
     componentDidMount() {
-        axios.get(route+"contacts/")
+        let cookie = Cookies.get('access_token')
+        console.log(cookie)
+        if(cookie == '' || cookie == 'undefined'){
+            this.setState({cookieExpired : true})
+            console.log(this.state.cookieExpired)
+        }
+        else{
+            this.getTable()
+        }
+    }
+
+    async getTable(){
+        await axios.get(route+"contacts/")
         .then(response => {
             console.log(response.data.data)
             const card_list = response.data.data.map(c => {
@@ -50,6 +67,9 @@ class App extends Component {
     }
 
     render () {
+        if(this.state.cookieExpired){
+            return <Redirect to="/"/>
+        }
         return (
             <div className="app-container">
                 <div className="app-wrapper">
