@@ -66,6 +66,26 @@
     margin-bottom: 5px;
 }
 
+.email-input-field {
+    width: 70%;
+    height: 20px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.auto-assign-field {
+    width: 28%;
+    font-size: 20px;
+}
+
+.email-input {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+}
+
 .textarea-field {
     width: 98%;
     height: 60px;

@@ -46,7 +46,7 @@ class AddPerson extends Component {
             department: this.state.department,
             status: this.state.status,
             phone: this.state.phone,
-            email: this.state.email,
+            email: this.state.email + "@inno.co.th",
             last_edited: this.state.last_edited,
             wifi_password: this.state.wifi_password,
             assets: this.state.assets,
@@ -202,10 +202,13 @@ class AddPerson extends Component {
                         onChange={e => this.handleChangeWithKey("department",e)}></input>
                     
                     <div className="textWrapper"><FontAwesomeIcon icon="envelope" className="icon" /> E-Mail</div>
-                    <input type="text" 
-                        className="input-field" 
-                        value={this.state.email}
-                        onChange={e => this.handleChangeWithKey("email",e)}></input>
+                    <div className="email-input">
+                        <input type="text" 
+                            className="email-input-field" 
+                            value={this.state.email}
+                            onChange={e => this.handleChangeWithKey("email",e)}></input>
+                        <div className="auto-assign-field"> @inno.co.th</div>    
+                    </div>
                     
                     <div className="textWrapper"><FontAwesomeIcon icon="laptop" className="icon" /> Assets</div>
                     <textarea type="text" 

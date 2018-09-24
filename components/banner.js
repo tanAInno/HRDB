@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import '../css/banner.css';
+import {Link} from 'react-router-dom';
 
 class Banner extends Component {
     render() {
         return(
             <div className="backGround">
-                <div className="headerTextWrapper">
                     <p className="headerText">Innovation</p>
-                </div>
+                    <Link to="/"><button className="logout-button">Logout</button></Link>
             </div>
         )
     }

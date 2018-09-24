@@ -83,7 +83,7 @@ class Card extends Component {
                 <div className="detail-container-wrapper">
                     <div className="detail-container">
                         <div className="first-row-detail-container">
-                            <div className="text-wrapper" style={{marginTop: '5px'}}>ID : {this.props.employee_id}</div>
+                            <div className="text-wrapper">ID : {this.props.employee_id}</div>
                             <div className="text-wrapper">Name : {this.props.name}</div>
                             <div className="text-wrapper">Position : {this.props.position}</div>
                             <div className="text-wrapper">Department : {this.props.department}</div>
@@ -97,7 +97,7 @@ class Card extends Component {
                             <div className="text-wrapper">Printer Password : {this.props.printer_password}</div>
                         </div>
                     </div>
-                    <div className="text-wrapper">Assets : {this.props.assets}</div>
+                    <div className="text-wrapper" style={{marginBottom: '3px'}}>Assets : {this.props.assets}</div>
                 </div>
                 <div className="card-button-wrapper">
                     <Link to="/view"><button className="view-button" onClick={this.onView}>View</button></Link>

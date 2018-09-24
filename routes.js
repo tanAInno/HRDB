@@ -4,11 +4,13 @@ import App from './containers/App';
 import AddPerson from './containers/AddPerson';
 import ViewPerson from './containers/ViewPerson';
 import EditPerson from './containers/EditPerson';
+import Login from './containers/Login';
 export default () => {
  return (
    <BrowserRouter>
    <Switch>
-   <Route exact path='/' component={App}/>
+   <Route path='/main' component={App}/>
+   <Route exact path='/' component={Login}/>
    <Route path='/add' component={AddPerson}/>
    <Route path='/view' component={ViewPerson}/>
    <Route path='/edit' component={EditPerson}/>
