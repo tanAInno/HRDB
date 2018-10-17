@@ -35,7 +35,8 @@ body {
     height: 100vh;
     background: #f5ffff;
     margin-left: 20%;
-    margin-top: 100px;
+    margin-top: 57px;
+    justify-content: center;
 }
 
 .app-header-container {
@@ -73,4 +74,123 @@ body {
     display: flex;
     flex: 1;
     flex-direction: column;
+}
+
+.table-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 96%;
+    height: 100%;
+    background: #e7e7e7;
+    border: 1px solid #000000;
+    margin-top: 25px;
+    margin-left: 2.3%;
+}
+
+.tab-box-container {
+    background: #00007f;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #000000;
+}
+
+.tab-link-wrapper {
+    width: 15%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #000000;
+}
+
+.tab-link-container {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    color: white;
+    background: rgba(0,0,0,0);
+    border: 0px;
+}
+
+.tab-link-container:focus{
+    outline: none;
+}
+
+.table-header-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    background: #8A8A8A;
+    align-items: center;
+    border-bottom: 1px solid #000000;
+}
+
+.table-header-date{
+    font-size: 18px;
+    width: 10%;
+    margin-left: 0.5%;
+    text-align: center
+}
+
+.table-header-name{
+    font-size: 18px;
+    width: 20%;
+    margin-left: 0.5%;
+    text-align: center;
+}
+
+.table-header-action{
+    font-size: 18px;
+    width: 10%;
+    margin-left: 0.5%;
+    text-align: center;
+}
+
+.table-header-target{
+    font-size: 18px;
+    width: 50%;
+    margin-left: 0.5%;
+    text-align: center;
+}
+
+.activity-card-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    background: #ffffff;
+    align-items: center;
+    border-bottom: 1px solid #000000;
+}
+
+.card-date{
+    font-size: 18px;
+    width: 10%;
+    margin-left: 0.5%;
+    text-align: center
+}
+
+.card-user{
+    font-size: 18px;
+    width: 20%;
+    margin-left: 0.5%;
+    text-align: center;
+}
+
+.card-action{
+    font-size: 18px;
+    width: 10%;
+    margin-left: 0.5%;
+    text-align: center;
+}
+
+.card-target{
+    font-size: 18px;
+    width: 50%;
+    margin-left: 0.5%;
+    text-align: center;
 }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Banner from '../components/banner';
 import route from '../api';
 import axios from 'axios'
 import '../css/addperson.css';
@@ -113,7 +112,9 @@ class AddPerson extends Component {
 
         return (
           <div>
-            <Banner/>
+            <div className="backGround">
+                <Link to="/"><button className="logout-button" onClick={() => this._onSubmit()}>Logout</button></Link>
+            </div>
             <div className="add-container">
               <div className="previewWrapper">
                 <div className="previewComponent">

@@ -10,7 +10,7 @@
 }
 
 .nav-icon {
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 1px;
     color: #00004c;
 }
@@ -23,13 +23,13 @@
     height: 100vh;
     background: #4b738e;
     position: fixed;
-    top: 100px;
+    top: 61px;
     left: 0;
     overflow-x: hidden;
 }
 
 .nav-text-wrapper {
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .text-set-wrapper {
@@ -50,24 +50,22 @@
     font-size: 15px;
 }
 
-.search-button {
-    width: 47%;
-    height: 35px;
-    background: #00007f;
-    border: 2px solid #00004c;
-    color: white;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-right: 2%;
-    margin-top: 10px;
-    float: right;
+.radio-group-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 95%
+}
+
+.radio-wrapper {
+    width: 50%;
 }
 
 .clear-button {
     width: 47%;
     height: 35px;
-    background: #e59400;
-    border: 2px solid #996300;
+    background: #00007f;
+    border: 2px solid #00004c;
     color: white;
     border-radius: 5px;
     font-size: 16px;

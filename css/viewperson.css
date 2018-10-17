@@ -1,7 +1,7 @@
 .view-container {
     display: flex;
     flex-direction: row;
-    margin-top: 110px;
+    margin-top: 70px;
 }
 
 .image-wrapper {

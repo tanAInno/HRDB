@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Banner from '../components/banner';
 import '../css/viewperson.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
@@ -10,7 +9,9 @@ class ViewPerson extends Component {
         const {person} = this.props.personReducer
         return(
             <div>
-                <Banner/>
+                <div className="backGround">
+                    <Link to="/"><button className="logout-button" onClick={() => this._onSubmit()}>Logout</button></Link>
+                </div>
                 <div className="view-container">
                     <div className="image-wrapper">
                         <div className="imgPreview">

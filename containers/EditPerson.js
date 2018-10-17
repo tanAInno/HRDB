@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Banner from '../components/banner';
 import '../css/editperson.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
@@ -142,7 +141,9 @@ class EditPerson extends Component {
 
         return (
             <div>
-                <Banner />
+                <div className="backGround">
+                    <Link to="/"><button className="logout-button" onClick={() => this._onSubmit()}>Logout</button></Link>
+                </div>
                 <div className="edit-container">
                     <div className="previewWrapper">
                     <div className="previewComponent">

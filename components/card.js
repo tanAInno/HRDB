@@ -107,8 +107,8 @@ class Card extends Component {
                         isOpen={this.state.modalIsOpen}
                         onAfterOpen={this.afterOpenModal}
                         onRequestClose={this.closeModal}
-                        style={customStyles}
                         contentLabel="Confirm Deletion"
+                        style={customStyles}
                     >
                         <h2 ref={subtitle => this.subtitle = subtitle} className="modal-sub-title">Confirm Delete</h2>
                         <div className="modal-detail">Are you sure you want to delete this person?</div>
