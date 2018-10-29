@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import route from '../api';
 import axios from 'axios'
 import '../css/addperson.css';
@@ -51,7 +52,18 @@ class AddPerson extends Component {
             assets: this.state.assets,
             printer_password: this.state.printer_password,
         }).catch(error => console.log(error))
+        this.addActivity()
         location.reload()
+    }
+
+    async addActivity() {
+        console.log(this.props.personReducer.user)
+        await axios.post(route+"activities/",{
+            date: this.state.last_edited,
+            user: this.props.personReducer.user,
+            action: "Added",
+            target: this.state.employee_id+" "+this.state.name
+        }).catch(error => console.log(error))
     }
 
     pad = (n) => {
@@ -228,4 +240,4 @@ class AddPerson extends Component {
     }
 }
 
-export default AddPerson
+export default connect(state => state)(AddPerson)

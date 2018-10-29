@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import Home from '../sidepages/home';
+import Report from '../sidepages/report';
 import Activity from '../sidepages/activity';
+import User from '../sidepages/user';
 import Cookies from 'js-cookie'
 import { connect } from 'react-redux';
 import { setCardlist, setPermaCardList, setFilterCardList, setCounter } from '../actions/cardlist';
+import { setTab } from '../actions/tabSelect'
 import { Link,Redirect } from 'react-router-dom';
 import axios from 'axios';
 import route from '../api'
@@ -12,13 +15,14 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdBadge, faFileSignature, faBriefcase, faBuilding, 
     faSearch, faCheckCircle, faPhoneSquare, faEnvelope, faWifi, 
-    faPrint, faLaptop } from '@fortawesome/free-solid-svg-icons'
+    faPrint, faLaptop, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import '../css/app.css'
 import '../css/banner.css'
+import { setUser, setMag } from '../actions/person';
 
 library.add(faIdBadge,faFileSignature,faBriefcase,faBuilding,
     faSearch,faCheckCircle,faPhoneSquare,faEnvelope,faWifi,faPrint
-    ,faLaptop)
+    ,faLaptop,faTrashAlt)
 
 class App extends Component {
 
@@ -38,13 +42,24 @@ class App extends Component {
             console.log(this.state.cookieExpired)
         }
         else{
+            this.props.dispatch(setUser(cookie))
             this.getTable()
+            this.getMag()
         }
         window.addEventListener('scroll', this.handleOnScroll);
     }
     
     componentWillMount() {
         window.removeEventListener('scroll', this.handleOnScroll);
+    }
+
+    async getMag(){
+        await fetch("http://localhost:5000/aismagellan/things")
+        .then(response => 
+            response.json()).then(json => {
+            console.log(json)
+            this.props.dispatch(setMag(json))
+        }).catch(error => console.log(error))
     }
 
     async getTable(){
@@ -97,33 +112,55 @@ class App extends Component {
       }
 
     render () {
+        console.log(this.props.tabReducer.tab)
         if(this.state.cookieExpired){
             return <Redirect to="/"/>
         }
         return (
             <Tabs className="app-container"
+                selectedTab={this.props.tabReducer.tab}
                 activeLinkStyle={{borderBottom: "5px solid #00b8ff",fontColor: "#00b8ff"}}>
                 <div className="app-wrapper">
                     <div className="backGround">
                         <TabLink className="header-text-wrapper" to="home">
-                            <button className="header-text">Home</button>
+                            <button className="header-text" 
+                                onClick={() => {this.props.dispatch(setTab("home"))}}>
+                                Home
+                            </button>
                         </TabLink>
                         <TabLink className="header-text-wrapper" to="report">
-                            <button className="header-text">Report</button>
+                            <button className="header-text"
+                                onClick={() => {this.props.dispatch(setTab("report"))}}>
+                                Report
+                            </button>
                         </TabLink>
                         <TabLink className="header-text-wrapper" to="act">
-                            <button className="header-text">Activities</button>
+                            <button className="header-text"
+                                onClick={() => {this.props.dispatch(setTab("act"))}}>
+                                Activities
+                            </button>
                         </TabLink>
                         <TabLink className="header-text-wrapper" to="user">
-                            <button className="header-text">Manage Users</button>
+                            <button className="header-text"
+                                onClick={() => {this.props.dispatch(setTab("user"))}}>
+                                Manage Users
+                            </button>
                         </TabLink>
                         <Link to="/"><button className="logout-button" onClick={() => this._onSubmit()}>Logout</button></Link>
+                    </div>
+                    <div>
                     </div>
                     <TabContent for="home">
                         <Home/>
                     </TabContent>
+                    <TabContent for="report">
+                        <Report/>
+                    </TabContent>
                     <TabContent for="act">
-                        <Activity/>
+                        <Activity update={() => {this.forceUpdate()}}/>
+                    </TabContent>
+                    <TabContent for="user">
+                        <User/>
                     </TabContent>
                 </div>
             </Tabs>

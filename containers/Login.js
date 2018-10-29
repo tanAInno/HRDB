@@ -4,6 +4,8 @@ import route from '../api';
 import axios from 'axios';
 import Cookies from 'js-cookie'
 import '../css/login.css';
+import { connect } from 'react-redux';
+import { setUser } from '../actions/person'
 
 class Login extends Component {
 
@@ -36,6 +38,7 @@ class Login extends Component {
             console.log(response)
             if (response.data.status == "login success"){
                 Cookies.set('access_token', response.data.accessToken, {expires:1})
+                this.props.dispatch(setUser(this.state.username))
                 this.setState({isLoggedIn : true})
             }
         }).catch(error=> {
@@ -81,4 +84,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default connect(state => state)(Login)

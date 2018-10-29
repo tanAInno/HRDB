@@ -98,8 +98,8 @@ class EditPerson extends Component {
 
     async editPerson() {
         await axios.put(route+"contacts/"+this.props.personIDReducer.personid,{
-            employee_id: this.state.id,
             name: this.state.name,
+            employee_id: this.state.id,
             image: this.state.imagePreviewUrl,
             position: this.state.position,
             department: this.state.department,
@@ -111,7 +111,17 @@ class EditPerson extends Component {
             printer_password: this.state.printer_password,
             assets: this.state.assets
         }).catch(error => console.log(error))
+        this.addActivity()
         location.reload()
+    }
+
+    async addActivity() {
+        await axios.post(route+"activities/",{
+            date: this.state.last_edited,
+            user: this.props.personReducer.user,
+            action: "Edited",
+            target: this.state.id+" "+this.state.name
+        }).catch(error => console.log(error))
     }
 
     handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });

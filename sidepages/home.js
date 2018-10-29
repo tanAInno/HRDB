@@ -6,6 +6,7 @@ import { Link,Redirect } from 'react-router-dom';
 import '../css/app.css'
 
 class Home extends Component {
+
     render(){
         return(
             <div className="app-content-container">

@@ -37,8 +37,18 @@ class Card extends Component {
 
     async deletePerson() {
         await axios.delete(route+"contacts/"+this.props.id)
+        this.addActivity()
         this.closeModal()
         location.reload()
+    }
+
+    async addActivity() {
+        await axios.post(route+"activities/",{
+            date: this.props.last_edited,
+            user: this.props.personReducer.user,
+            action: "Deleted",
+            target: this.props.employee_id+" "+this.props.name
+        }).catch(error => console.log(error))
     }
 
     openModal() {

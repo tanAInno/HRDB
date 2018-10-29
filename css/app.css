@@ -131,6 +131,7 @@ body {
 
 .table-header-date{
     font-size: 18px;
+    font-weight: bold;
     width: 10%;
     margin-left: 0.5%;
     text-align: center
@@ -138,13 +139,15 @@ body {
 
 .table-header-name{
     font-size: 18px;
+    font-weight: bold;
     width: 20%;
     margin-left: 0.5%;
     text-align: center;
 }
 
 .table-header-action{
-    font-size: 18px;
+    font-size: 18px;    
+    font-weight: bold;
     width: 10%;
     margin-left: 0.5%;
     text-align: center;
@@ -152,6 +155,7 @@ body {
 
 .table-header-target{
     font-size: 18px;
+    font-weight: bold;
     width: 50%;
     margin-left: 0.5%;
     text-align: center;
@@ -193,4 +197,80 @@ body {
     width: 50%;
     margin-left: 0.5%;
     text-align: center;
+}
+
+.card-button{
+    width: 32px;
+    height: 32px;
+    background: #660000;
+    text-align: center;
+}
+
+.delete-icon{
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.report-content {
+    width: 100vw;
+    height: 100vh;
+    background: #f5ffff;
+    margin-top: 57px;
+    justify-content: center;
+}
+
+.user-content {
+    width: 100vw;
+    height: 100vh;
+    background: #f5ffff;
+    margin-top: 57px;
+    justify-content: center;
+}
+
+.chart-container {
+    width: 31%;
+    height: 300px;
+    background: #ffffff;
+    margin-left: 1.5%;
+    margin-top: 20px;
+    border: 1.5px solid #505050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-set-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-box {
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    height: 150px;
+    margin-top: 20px;
+    margin-left: 7%;
+    border: 3px solid #505050;
+    border-radius: 5px;
+    background: #D3D3D3;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #696969;
+}
+
+.data-text {
+    font-size: 26px;
+    color: #696969;
+    margin-top: 10px;
 }
